@@ -1,0 +1,12 @@
+<mat-card>
+  <ng-container [formGroup]="controlContainer?.control">
+    <mat-form-field>
+      <mat-label>Gift Name</mat-label>
+      <input matInput formControlName="giftName" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Gift Url</mat-label>
+      <input matInput formControlName="giftUrl" />
+    </mat-form-field>
+  </ng-container>
+</mat-card>

@@ -3,5 +3,128 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-  }
+    "santa-letter-app": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/santa-letter-app",
+      "sourceRoot": "projects/santa-letter-app/src",
+      "prefix": "santa",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/santa-letter-app",
+            "index": "projects/santa-letter-app/src/index.html",
+            "main": "projects/santa-letter-app/src/main.ts",
+            "polyfills": "projects/santa-letter-app/src/polyfills.ts",
+            "tsConfig": "projects/santa-letter-app/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "projects/santa-letter-app/src/favicon.ico",
+              "projects/santa-letter-app/src/assets"
+            ],
+            "styles": [
+              "projects/santa-letter-app/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/santa-letter-app/src/environments/environment.ts",
+                  "with": "projects/santa-letter-app/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "santa-letter-app:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "santa-letter-app:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "santa-letter-app:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/santa-letter-app/src/test.ts",
+            "polyfills": "projects/santa-letter-app/src/polyfills.ts",
+            "tsConfig": "projects/santa-letter-app/tsconfig.spec.json",
+            "karmaConfig": "projects/santa-letter-app/karma.conf.js",
+            "assets": [
+              "projects/santa-letter-app/src/favicon.ico",
+              "projects/santa-letter-app/src/assets"
+            ],
+            "styles": [
+              "projects/santa-letter-app/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/santa-letter-app/tsconfig.app.json",
+              "projects/santa-letter-app/tsconfig.spec.json",
+              "projects/santa-letter-app/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/santa-letter-app/e2e/protractor.conf.js",
+            "devServerTarget": "santa-letter-app:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "santa-letter-app:serve:production"
+            }
+          }
+        }
+      }
+    }},
+  "cli": {
+    "analytics": false
+  },
+  "defaultProject": "santa-letter-app"
 }

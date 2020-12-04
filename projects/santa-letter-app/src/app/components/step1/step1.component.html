@@ -1,0 +1,24 @@
+<mat-card color="primary">
+  <mat-card-title><h1>Personal Data</h1> </mat-card-title>
+
+  <ng-container [formGroup]="controlContainer!.control">
+    <mat-form-field appearance="outline">
+      <mat-label>First Name</mat-label>
+      <input matInput formControlName="firstName" />
+      <mat-error>First name must be entered</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Last Name</mat-label>
+      <input matInput formControlName="lastName" />
+      <mat-error>Last name must be entered</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Age</mat-label>
+      <input matInput type="number" formControlName="age" />
+      <mat-error>Age must be entered</mat-error>
+    </mat-form-field>
+  </ng-container>
+  <mat-card-actions>
+    <a mat-button routerLink="/step2" color="primary">Next</a>
+  </mat-card-actions>
+</mat-card>

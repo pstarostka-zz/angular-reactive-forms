@@ -1,0 +1,14 @@
+<mat-toolbar color="primary">
+  <img [src]="santa" alt="santa" class="logo" color="accent" />
+  Santa letter sender
+</mat-toolbar>
+
+<div class="container">
+  <form [formGroup]="form">
+    <router-outlet></router-outlet>
+  </form>
+</div>
+
+<div class="m-4">
+  <pre><code>{{form?.value | json}}</code></pre>
+</div>

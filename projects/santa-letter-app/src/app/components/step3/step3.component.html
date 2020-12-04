@@ -1,0 +1,28 @@
+<mat-card>
+  <mat-card-title>
+    <h1>Wishes</h1>
+  </mat-card-title>
+  <ng-container [formGroup]="controlContainer?.control?.get('giftWishes')">
+    <ng-container
+      *ngFor="
+        let wish of (controlContainer?.control?.get('giftWishes') | formArray).controls;
+        let l = last;
+        let i = index
+      "
+      [formGroup]="wish"
+    >
+      <santa-gift-wish-form> </santa-gift-wish-form>
+      <button mat-icon-button color="primary" *ngIf="l" (click)="addWish()">
+        <mat-icon>add</mat-icon>
+      </button>
+
+      <button mat-icon-button color="primary" (click)="removeWish(i)">
+        <mat-icon>remove</mat-icon>
+      </button>
+    </ng-container>
+  </ng-container>
+  <mat-card-actions>
+    <a mat-button routerLink="/step2" color="accent">Previous</a>
+    <a mat-button routerLink="/step3" color="primary">Next</a>
+  </mat-card-actions>
+</mat-card>
